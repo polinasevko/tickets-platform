@@ -8,8 +8,14 @@ class ConcertListView(generics.ListAPIView):
     serializer_class = ConcertListSerializer
 
 
-class ConcertDetailView(generics.RetrieveAPIView):
+class ConcertDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Concert.objects.all()
-    permission_classes = [permissions.AllowAny]
     serializer_class = ConcertDetailSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            self.permission_classes = [permissions.AllowAny]
+        else:
+            self.permission_classes = [permissions.IsAdminUser]
+        return super().get_permissions()
 
