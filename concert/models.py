@@ -1,16 +1,9 @@
-from pyexpat import model
 from django.db import models
-
-
-class ConcertType(models.Model):
-    name = models.CharField(max_length=20)
-    slug = models.SlugField(unique=True)
-
-    def __str__(self) -> str:
-        return f'Type {self.name}'
+from concert_type.models import ConcertType
 
 
 class Concert(models.Model):
+    '''Main concert model'''
     name = models.CharField(max_length=20)
     performer  = models.CharField(max_length=20)
     type = models.ForeignKey(ConcertType, on_delete=models.CASCADE)
@@ -18,6 +11,7 @@ class Concert(models.Model):
     date = models.DateTimeField()
     address = models.TextField(max_length=100)
     price = models.DecimalField(max_digits=12, decimal_places=2)
+    image = models.ImageField()
     description = models.TextField(max_length=200, blank=True, null=True)
 
     def __str__(self) -> str:
@@ -25,14 +19,16 @@ class Concert(models.Model):
     
 
 class TypeCharacteristic(models.Model):
+    '''Characteristic inherent in a particular type of concert: composer for classic concert type'''
     concert_type = models.ForeignKey(ConcertType, on_delete=models.CASCADE)
-    name = name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self) -> str:
         return f'Type characteristic {self.name}'
 
 
 class ValueOfCharacteristic(models.Model):
+    '''Value of a particular characteristic: composer (for classic) - Ludovico Einaudi'''
     type_characteristic = models.ForeignKey(TypeCharacteristic, on_delete=models.CASCADE)
     value = models.CharField(max_length=20)
     concerts = models.ManyToManyField(Concert, blank=True, related_name='characteristics')
