@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'concert_type',
     'concert',
+    'characteristic',
 ]
 
 MIDDLEWARE = [
