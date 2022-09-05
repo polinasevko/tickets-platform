@@ -1,0 +1,79 @@
+/* lato-regular - latin */
+@font-face {
+     font-family: 'Lato';
+     font-style: normal;
+     font-weight: 400;
+     src: local(''),
+          url('../fonts/lato-v23-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url('../fonts/lato-v23-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+   /* lato-700 - latin */
+@font-face {
+     font-family: 'Lato';
+     font-style: normal;
+     font-weight: 700;
+     src: local(''),
+          url('../fonts/lato-v23-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url('../fonts/lato-v23-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-900 - latin */
+@font-face {
+     font-family: 'Lato';
+     font-style: normal;
+     font-weight: 900;
+     src: local(''),
+          url('../fonts/lato-v23-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url('../fonts/lato-v23-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+html{
+     box-sizing: border-box;
+}
+
+*, *::before, *::after{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body{
+     background: url(../img/jpg/background.jpg);
+     background-repeat: no-repeat;
+     background-attachment: local;
+     background-size: cover;
+     background-position-y: -302px;
+     background-color: black;
+
+     font-family: 'Lato';
+     font-style: normal;
+     font-weight: normal;
+     font-size: 24px;
+     line-height: 1.2;
+     color: black;
+}
+
+.app{
+     min-height: 100%;
+     width: 100%;
+ }
+
+h1{
+     color: white;
+     font-weight: 400;
+     font-size: 96px;
+}
+
+b{
+     font-weight: 900;
+}
+
+a{
+     text-decoration-line: none;
+     color: black;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+     h1{
+          font-size: 44px;
+     }
+ }
