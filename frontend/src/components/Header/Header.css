@@ -1,18 +1,16 @@
 .header{
-    position: fixed;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
 }
 
 .header__wrapper{
-    max-width: 1280px;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2vw;
+    padding: 0 5vw;
 }
 
 .header__nav{
@@ -22,13 +20,7 @@
 }
 
 .header__link{
-    background-color: white;
-    border-radius: 4px;
-    height: 37px;
-    line-height: 37px;
-    width: 80px;
     font-size: 18px;
-    text-align: center;
 }
 
 .header__link:active {

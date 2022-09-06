@@ -60,8 +60,14 @@ body{
 h1{
      color: white;
      font-weight: 400;
-     font-size: 96px;
+     font-size: 48px;
 }
+
+h2{
+     color: white;
+     font-size: 32px;
+     font-weight: 400;
+ }
 
 b{
      font-weight: 900;
@@ -71,6 +77,22 @@ a{
      text-decoration-line: none;
      color: black;
 }
+
+.main-container{
+     display: flex;
+     padding: 0 5vw;
+}
+
+.button{
+     display: block;
+     background-color: white;
+     border-radius: 4px;
+     height: 38px;
+     line-height: 38px;
+     width: 80px;
+     font-size: 20px;
+     text-align: center;
+ }
 
 @media screen and (max-aspect-ratio: 1/1) {
      h1{

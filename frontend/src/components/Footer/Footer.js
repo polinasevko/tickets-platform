@@ -14,7 +14,7 @@ const Footer = () => {
             <a href='https://www.linkedin.com/in/polina-sevko' target='_blank' rel='noopener noreferrer'>
                 <AiFillLinkedin className='footer__img'/>
             </a>
-            <p class='footer__text-info'>2022</p>
+            <p className='footer__text-info'>2022</p>
         </div>
     </footer>
   )
