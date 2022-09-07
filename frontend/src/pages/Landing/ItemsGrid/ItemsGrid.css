@@ -1,0 +1,5 @@
+.items-grid{
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}

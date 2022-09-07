@@ -1,0 +1,15 @@
+p{
+    color: white;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.landing{
+    margin-top: 40px;
+}
+
+.landing__button{
+    width: 165px;
+    margin: 25px 0 40px 0;
+    background-color: #E6E6E6;
+}

@@ -12,7 +12,6 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Landing />} />
             </Routes>
-          <Footer />
         </div>
         <Footer />
     </div>
