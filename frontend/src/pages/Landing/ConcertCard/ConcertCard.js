@@ -1,8 +1,8 @@
-import React from 'react'
-import { Card, ListGroup } from 'react-bootstrap';
-import './ConcertCard.css'
+import React from "react";
+import { Card, ListGroup } from "react-bootstrap";
+import "./ConcertCard.css";
 
-const ConcertCard = ({concert}) => {
+const ConcertCard = ({ concert }) => {
   return (
     <Card>
       <Card.Img src={concert.image} />
@@ -12,10 +12,10 @@ const ConcertCard = ({concert}) => {
           <ListGroup.Item>{concert.performer}</ListGroup.Item>
           <ListGroup.Item>{concert.address}</ListGroup.Item>
           <ListGroup.Item>{concert.date}</ListGroup.Item>
-      </ListGroup>
+        </ListGroup>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default ConcertCard
+export default ConcertCard;

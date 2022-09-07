@@ -37,13 +37,11 @@ html{
 }
 
 body{
-     background: url(../img/jpg/background.jpg);
-     background-repeat: no-repeat;
      background-attachment: local;
+     background-repeat: no-repeat;
+     background-position-x: center;
      background-size: cover;
-     background-position-y: -302px;
      background-color: black;
-
      font-family: 'Lato';
      font-style: normal;
      font-weight: normal;
@@ -97,7 +95,6 @@ a{
 @media screen and (max-aspect-ratio: 1/1) {
      body{
           background-size: cover;
-          background-position-x: center;
      }
 
      h1{
