@@ -2,4 +2,12 @@
     margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(3, auto);
+    gap: 5px;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .items-grid{
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, auto);
+    }
 }

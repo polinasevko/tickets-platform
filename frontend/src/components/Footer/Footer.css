@@ -37,11 +37,6 @@ footer{
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    .footer__wrapper{
-        max-width: 326px;
-        justify-content: start;    
-    }
-
     .footer__text-info{
         font-size: 12px;
         margin-right: 5px;

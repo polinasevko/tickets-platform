@@ -80,7 +80,7 @@ a{
 
 .main-container{
      display: flex;
-     padding: 0 5vw;
+     padding: 0 5vw 6vh;
 }
 
 .button{
@@ -95,7 +95,23 @@ a{
  }
 
 @media screen and (max-aspect-ratio: 1/1) {
+     body{
+          background-size: cover;
+          background-position-x: center;
+     }
+
      h1{
-          font-size: 44px;
+          font-size: 36px;
+     }
+
+     h2{
+          font-size: 24px;
+     }
+
+     .button{
+          height: 25px;
+          line-height: 25px;
+          width: 100px;
+          font-size: 14px;
      }
  }

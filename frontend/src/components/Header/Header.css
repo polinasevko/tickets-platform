@@ -33,11 +33,6 @@
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    /* .header__wrapper{
-        max-width: 326px;
-        align-items: center;
-    } */
-
     .header__nav{
         column-gap: 10px;
     }
