@@ -8,50 +8,103 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Concert',
+            name="Concert",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
-                ('tickets_number', models.PositiveIntegerField(default=0)),
-                ('date', models.DateTimeField()),
-                ('address', models.TextField(max_length=100)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('description', models.TextField(blank=True, max_length=200, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
+                ("tickets_number", models.PositiveIntegerField(default=0)),
+                ("date", models.DateTimeField()),
+                ("address", models.TextField(max_length=100)),
+                ("price", models.DecimalField(decimal_places=2, max_digits=12)),
+                (
+                    "description",
+                    models.TextField(blank=True, max_length=200, null=True),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ConcertType',
+            name="ConcertType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
-                ('slug', models.SlugField(unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
+                ("slug", models.SlugField(unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='TypeCharacteristic',
+            name="TypeCharacteristic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
-                ('concert_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='concert.concerttype')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
+                (
+                    "concert_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="concert.concerttype",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ValueOfCharacteristic',
+            name="ValueOfCharacteristic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('value', models.CharField(max_length=20)),
-                ('concerts', models.ManyToManyField(blank=True, related_name='characteristics', to='concert.concert')),
-                ('type_characteristic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='concert.typecharacteristic')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("value", models.CharField(max_length=20)),
+                (
+                    "concerts",
+                    models.ManyToManyField(
+                        blank=True, related_name="characteristics", to="concert.concert"
+                    ),
+                ),
+                (
+                    "type_characteristic",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="concert.typecharacteristic",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='concert',
-            name='type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='concert.concerttype'),
+            model_name="concert",
+            name="type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="concert.concerttype"
+            ),
         ),
     ]

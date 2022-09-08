@@ -4,9 +4,9 @@ from concert_type.views import ConcertTypeView
 
 
 router = DefaultRouter()
-router.register(r'', ConcertTypeView, basename="concert-type")
+router.register(r"", ConcertTypeView, basename="concert-type")
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

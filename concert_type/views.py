@@ -8,7 +8,7 @@ class ConcertTypeView(viewsets.ModelViewSet):
     queryset = ConcertType.objects.all()
 
     def get_permissions(self):
-        if self.action in ['retrieve', 'list']:
+        if self.action in ["retrieve", "list"]:
             self.permission_classes = [permissions.AllowAny]
         else:
             self.permission_classes = [permissions.IsAdminUser]

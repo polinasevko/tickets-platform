@@ -6,22 +6,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('concert', '0003_concert_image_alter_concert_type_and_more'),
+        ("concert", "0003_concert_image_alter_concert_type_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='valueofcharacteristic',
-            name='concerts',
+            model_name="valueofcharacteristic",
+            name="concerts",
         ),
         migrations.RemoveField(
-            model_name='valueofcharacteristic',
-            name='type_characteristic',
+            model_name="valueofcharacteristic",
+            name="type_characteristic",
         ),
         migrations.DeleteModel(
-            name='TypeCharacteristic',
+            name="TypeCharacteristic",
         ),
         migrations.DeleteModel(
-            name='ValueOfCharacteristic',
+            name="ValueOfCharacteristic",
         ),
     ]

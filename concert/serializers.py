@@ -9,23 +9,24 @@ class ConcertListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Concert
-        fields = ('id', 'name', 'performer', 'date', 'address', 'image')
+        fields = ("id", "name", "performer", "date", "address", "image")
 
 
 class ConcertDetailSerializer(serializers.ModelSerializer):
     type = ConcertTypeSerializer()
     characteristics = ValueOfCharacteristicSerializer(many=True)
+
     class Meta:
         model = Concert
         fields = (
-            'name', 
-            'performer', 
-            'type', 
-            'tickets_number', 
-            'date', 
-            'address', 
-            'price', 
-            'image', 
-            'description', 
-            'characteristics'
-            )
+            "name",
+            "performer",
+            "type",
+            "tickets_number",
+            "date",
+            "address",
+            "price",
+            "image",
+            "description",
+            "characteristics",
+        )

@@ -7,28 +7,34 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('concert_type', '0001_initial'),
-        ('concert', '0002_concert_performer'),
+        ("concert_type", "0001_initial"),
+        ("concert", "0002_concert_performer"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='concert',
-            name='image',
-            field=models.ImageField(default='q', upload_to=''),
+            model_name="concert",
+            name="image",
+            field=models.ImageField(default="q", upload_to=""),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='concert',
-            name='type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='concert_type.concerttype'),
+            model_name="concert",
+            name="type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="concert_type.concerttype",
+            ),
         ),
         migrations.AlterField(
-            model_name='typecharacteristic',
-            name='concert_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='concert_type.concerttype'),
+            model_name="typecharacteristic",
+            name="concert_type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="concert_type.concerttype",
+            ),
         ),
         migrations.DeleteModel(
-            name='ConcertType',
+            name="ConcertType",
         ),
     ]
