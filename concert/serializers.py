@@ -5,11 +5,12 @@ from characteristic.serializers import ValueOfCharacteristicSerializer
 
 
 class ConcertListSerializer(serializers.ModelSerializer):
+    type = ConcertTypeSerializer()
     date = serializers.DateTimeField(format="%d-%m-%Y")
 
     class Meta:
         model = Concert
-        fields = ("id", "name", "performer", "date", "address", "image")
+        fields = ("id", "type", "name", "performer", "date", "address", "image")
 
 
 class ConcertDetailSerializer(serializers.ModelSerializer):
