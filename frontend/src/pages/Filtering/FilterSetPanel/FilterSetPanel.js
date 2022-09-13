@@ -6,15 +6,15 @@ import DateRangeInput from "../../../components/DateRangeInput/DateRangeInput";
 import { format } from "date-fns";
 import "./FilterSetPanel.css";
 
-const FilterSetPanel = () => {
+const FilterSetPanel = ({ handleSubmit, setParams }) => {
   let [types, setType] = useState("");
-  let [params, setParams] = useState({
-    date_after: "",
-    date_before: "",
-    type: "",
-    address: "",
-    search: "",
-  });
+  // let [params, setParams] = useState({
+  //   date_after: "",
+  //   date_before: "",
+  //   type: "",
+  //   address: "",
+  //   search: "",
+  // });
   let [range, setRange] = useState([
     {
       startDate: new Date(),
@@ -45,28 +45,11 @@ const FilterSetPanel = () => {
     if (range[0].endDate) {
       date_before = format(range[0].endDate, "yyyy-MM-dd");
     }
-    setParams({
-      ...params,
-      date_after,
-      date_before,
-    });
+    setParams({ date_after, date_before });
   }, [range]);
 
   let onRangeChange = (items) => {
     setRange(items);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      let response = await fetch(
-        "http://127.0.0.1:8000/api/concert?" + new URLSearchParams(params)
-      );
-      let data = await response.json();
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   return (
@@ -74,8 +57,7 @@ const FilterSetPanel = () => {
       <Input
         type="text"
         placeholder="Address"
-        value={params.address}
-        onChange={(address) => setParams({ ...params, address })}
+        onChange={(address) => setParams({ address })}
         className="filterset-form__input-text"
       />
       <DateRangeInput
@@ -85,14 +67,13 @@ const FilterSetPanel = () => {
       />
       <SelectElement
         items={types}
-        onChange={(type) => setParams({ ...params, type })}
+        onChange={(type) => setParams({ type })}
         className="filterset-form__input-text"
       />
       <Input
         type="text"
         placeholder="Name/Artist"
-        value={params.search}
-        onChange={(search) => setParams({ ...params, search })}
+        onChange={(search) => setParams({ search })}
         className="filterset-form__input-text"
       />
       <button type="submit" className="filterset-form__search-button button">
