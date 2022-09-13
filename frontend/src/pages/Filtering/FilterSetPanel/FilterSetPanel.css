@@ -1,0 +1,42 @@
+.filterset-form{
+    display:flex;
+    justify-content: center;
+}
+
+.filterset-form__input-text{
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    width: 210px;
+    font-size: 18px;
+    border: 0px;
+    background-color: white;
+    appearance: none;
+    padding-left: 10px;}
+
+.filterset-form__search-button {
+    background-color: #e6e6e6;
+    border-radius: 0px;
+    border: 0px;
+    height: 38px;
+    line-height: 38px;
+    width: 210px;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .filterset-form {
+        flex-direction: column;
+    }
+
+    .filterset-form__input-text {
+        height: 32px;
+        font-size: 16px;
+        line-height: 16px;
+    }
+    
+    .filterset-form__search-button {        
+        font-size: 16px;
+        line-height: 16px;
+        height: 32px;
+    }
+}

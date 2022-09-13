@@ -23,7 +23,9 @@ const CardPanel = () => {
     <div>
       <h2>Top concerts</h2>
       <ItemsGrid>
-        {concerts ? concerts.map((c) => <ConcertCard concert={c} />) : null}
+        {concerts
+          ? concerts.slice(0, 3).map((c) => <ConcertCard concert={c} />)
+          : null}
       </ItemsGrid>
     </div>
   );

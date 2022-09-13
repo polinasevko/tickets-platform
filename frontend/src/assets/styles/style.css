@@ -78,7 +78,10 @@ a{
 
 .main-container{
      display: flex;
-     padding: 0 5vw 6vh;
+     margin-top: 40px;
+     padding: 0 0 6vh;
+     justify-content: center;
+     align-items: center;
 }
 
 .button{
@@ -92,10 +95,12 @@ a{
      text-align: center;
  }
 
+.button:hover,
+.button:focus {
+     opacity: 75%;
+}
+
 @media screen and (max-aspect-ratio: 1/1) {
-     body{
-          background-size: cover;
-     }
 
      h1{
           font-size: 36px;

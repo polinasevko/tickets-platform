@@ -6,9 +6,7 @@ import backgroundMainImage from "../../assets/img/jpg/background.jpg";
 
 const Landing = () => {
   useEffect(() => {
-    console.log("here");
     document.body.style.backgroundImage = `url(${backgroundMainImage})`;
-    document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPositionY = "-302px";
   }, []);
 
