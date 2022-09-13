@@ -67,6 +67,17 @@ h2{
      font-weight: 400;
  }
 
+h3{
+     color: white;
+     font-size: 60px;
+     font-weight: 400;
+}
+
+h4{
+     font-size: 26px;
+     font-weight: 400;
+}
+
 b{
      font-weight: 900;
 }
@@ -98,6 +109,10 @@ a{
 .button:hover,
 .button:focus {
      opacity: 75%;
+}
+
+.button:active{
+     opacity: 100%;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {

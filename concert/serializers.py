@@ -6,7 +6,7 @@ from characteristic.serializers import ValueOfCharacteristicSerializer
 
 class ConcertListSerializer(serializers.ModelSerializer):
     type = ConcertTypeSerializer()
-    date = serializers.DateTimeField(format="%d-%m-%Y")
+    # date = serializers.DateTimeField(format="%d-%m-%Y")
 
     class Meta:
         model = Concert

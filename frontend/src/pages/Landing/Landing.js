@@ -12,9 +12,9 @@ const Landing = () => {
 
   return (
     <div className="landing">
-      <p>Find your perfect</p>
-      <p>concert whereever</p>
-      <p>you are</p>
+      <h3>Find your perfect</h3>
+      <h3>concert whereever</h3>
+      <h3>you are</h3>
       <Link to="/concerts" className="landing__button button">
         Find a concert
       </Link>

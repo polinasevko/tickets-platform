@@ -43,7 +43,7 @@ const Filtering = () => {
     <div className="filtering">
       <FilterSetPanel handleSubmit={handleSubmit} setParams={setParamsHandle} />
 
-      {show && <FilteredData />}
+      {show && <FilteredData filteredData={filteredData}/>}
     </div>
   );
 };
