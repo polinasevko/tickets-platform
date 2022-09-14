@@ -1,14 +1,13 @@
-import { React, useEffect, useState } from "react";
-import backgroundWaveImage from "../../assets/img/svg/wave.svg";
+import { React, useState } from "react";
 import FilterSetPanel from "./FilterSetPanel/FilterSetPanel";
 import FilteredData from "./FilteredData/FilteredData";
 import "./Filtering.css";
 
 const Filtering = () => {
-  useEffect(() => {
-    document.body.style.backgroundImage = `url(${backgroundWaveImage})`;
-    document.body.style.backgroundPositionY = "0px";
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.backgroundImage = `url(${backgroundWaveImage})`;
+  //   document.body.style.backgroundPositionY = "0px";
+  // }, []);
 
   let [filteredData, setFilteredData] = useState([]);
   let [show, setShow] = useState(false);

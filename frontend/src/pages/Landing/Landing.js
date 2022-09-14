@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import "./Landing.css";
 import CardPanel from "./CardPanel/CardPanel";
 import backgroundMainImage from "../../assets/img/jpg/background.jpg";
+import backgroundWaveImage from "../../assets/img/svg/wave.svg";
 
 const Landing = () => {
   useEffect(() => {
     document.body.style.backgroundImage = `url(${backgroundMainImage})`;
     document.body.style.backgroundPositionY = "-302px";
+
+    return () => {
+      document.body.style.backgroundImage = `url(${backgroundWaveImage})`;
+      document.body.style.backgroundPositionY = "0px";
+    };
   }, []);
 
   return (
