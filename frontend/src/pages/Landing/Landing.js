@@ -9,10 +9,12 @@ const Landing = () => {
   useEffect(() => {
     document.body.style.backgroundImage = `url(${backgroundMainImage})`;
     document.body.style.backgroundPositionY = "-302px";
+    document.body.style.backgroundSize = "cover";
 
     return () => {
       document.body.style.backgroundImage = `url(${backgroundWaveImage})`;
       document.body.style.backgroundPositionY = "0px";
+      document.body.style.backgroundSize = "contain";
     };
   }, []);
 
