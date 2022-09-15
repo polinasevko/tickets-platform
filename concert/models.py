@@ -13,7 +13,7 @@ class Concert(models.Model):
     address = models.TextField(max_length=100)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     image = models.ImageField(upload_to="concert_images")
-    description = models.TextField(max_length=200, blank=True, null=True)
+    description = models.TextField(max_length=1000, blank=True, null=True)
 
     def __str__(self) -> str:
         return f"Concert {self.name}"
