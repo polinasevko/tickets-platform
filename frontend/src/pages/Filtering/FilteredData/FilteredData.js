@@ -7,17 +7,21 @@ import { Link } from "react-router-dom";
 const FilteredData = ({ filteredData }) => {
   const [page, setPage] = useState(0);
   const dataLength = filteredData.length;
-  const rowsPerPage = 1;
+  const rowsPerPage = 5;
 
   const handleClick = () => {
-    setPage((prev) => prev += 1);
-  }
+    setPage((prev) => (prev += 1));
+  };
 
   const loadedRowsNumber = () => {
     if (page * rowsPerPage + rowsPerPage < dataLength) {
       return page * rowsPerPage + rowsPerPage;
     }
     return dataLength;
+  };
+
+  if (!filteredData.length) {
+    return <h3>Not found</h3>;
   }
 
   return (
@@ -29,15 +33,20 @@ const FilteredData = ({ filteredData }) => {
             .map((item) => {
               let date = new Date(item.date);
               return (
-                <tr>
-                  <td>{format(date, "MMM, d")}</td>
-                  <td>
+                <tr className="filtered-data-table__row">
+                  <td className="filtered-data-table__cell">
+                    {format(date, "MMM, d")}
+                  </td>
+                  <td className="filtered-data-table__cell">
                     {format(date, "EEE, p")}
-                    <h4>{item.name}</h4>
+                    <p className="filtered-data-table__concert-name">{item.name}</p>
                     {item.address}
                   </td>
-                  <td>
-                    <Link to="#" className="concert-details-link button">
+                  <td className="filtered-data-table__cell">
+                    <Link
+                      to={`/concert/${item.id}`}
+                      className="concert-details-link button"
+                    >
                       More
                     </Link>
                   </td>

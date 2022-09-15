@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ItemsGrid from "../ItemsGrid/ItemsGrid";
-import ConcertCard from "../ConcertCard/ConcertCard";
+import { Link } from "react-router-dom";
+import ItemsGrid from "../../../components/ItemsGrid/ItemsGrid";
+import ConcertCard from "../../../components/ConcertCard/ConcertCard";
 
 const CardPanel = () => {
   const [concerts, setConcert] = useState(null);
@@ -24,7 +25,11 @@ const CardPanel = () => {
       <h2>Top concerts</h2>
       <ItemsGrid>
         {concerts
-          ? concerts.slice(0, 3).map((c) => <ConcertCard concert={c} />)
+          ? concerts.slice(0, 3).map((c) => (
+              <Link to={`/concert/${c.id}`}>
+                <ConcertCard concert={c} dateFormat="yyyy-MM-dd" />
+              </Link>
+            ))
           : null}
       </ItemsGrid>
     </div>

@@ -36,7 +36,7 @@ const DateRangeInput = ({ ranges, onRangeChange, className }) => {
   };
 
   return (
-    <div>
+    <>
       <OverlayTrigger
         trigger="click"
         placement="bottom-end"
@@ -51,7 +51,7 @@ const DateRangeInput = ({ ranges, onRangeChange, className }) => {
           className={className}
         ></input>
       </OverlayTrigger>
-    </div>
+    </>
   );
 };
 

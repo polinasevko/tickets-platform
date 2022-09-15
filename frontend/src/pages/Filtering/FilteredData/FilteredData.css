@@ -4,25 +4,30 @@
     border-collapse: collapse;
 }
 
-tr{
+.filtered-data-table__row{
     border-bottom: 2px solid;
     background-color: white;
     height: 112px;
 }
 
-td{
+.filtered-data-table__cell{
     padding: 15px;
     font-size: 16px;
 }
 
-td:first-child{
+.filtered-data-table__cell:first-child {
     text-align: center;
     font-size: 24px;
     width: 10%;
 }
 
-td:last-child {
+.filtered-data-table__cell:last-child {
     width: 20%;
+}
+
+.filtered-data-table__concert-name{
+    font-size: 26px;
+    font-weight: 400;
 }
 
 .concert-details-link{

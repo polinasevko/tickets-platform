@@ -8,13 +8,7 @@ import "./FilterSetPanel.css";
 
 const FilterSetPanel = ({ handleSubmit, setParams }) => {
   let [types, setType] = useState("");
-  // let [params, setParams] = useState({
-  //   date_after: "",
-  //   date_before: "",
-  //   type: "",
-  //   address: "",
-  //   search: "",
-  // });
+
   let [range, setRange] = useState([
     {
       startDate: new Date(),

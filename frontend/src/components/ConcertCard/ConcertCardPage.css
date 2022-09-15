@@ -1,0 +1,43 @@
+.card{
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.card-title{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.card-img{
+    height: 200px;
+    width: auto;
+}
+
+.list-group-item{
+    color: #fff;
+    font-size: 24px;
+    margin: 3px 0;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .card{
+        gap: 10px;
+    }
+    
+    .card-title{
+        font-size: 16px;
+    }
+    
+    .card-img{
+        height: 100px;
+        width: auto;
+    }
+    
+    .list-group-item{
+        font-size: 10px;
+    }
+    
+}

@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Landing from "./pages/Landing/Landing";
 import Filtering from "./pages/Filtering/Filtering";
+import ConcertDetail from "./pages/ConcertDetail/ConcertDetail";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/concerts" element={<Filtering />} />
+          <Route path="/concert/:id" element={<ConcertDetail />} />
         </Routes>
       </div>
       <Footer />
