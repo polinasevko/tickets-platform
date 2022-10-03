@@ -6,20 +6,33 @@ import Landing from "./pages/Landing/Landing";
 import Filtering from "./pages/Filtering/Filtering";
 import ConcertDetail from "./pages/ConcertDetail/ConcertDetail";
 import Login from "./components/Login/Login";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Order from "./pages/Order/Order";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <div className="app">
-      <Header />
-      <div className="main-container">
-        <Routes>
-          <Route exact path="/" element={<Landing />} />
-          <Route path="/concerts" element={<Filtering />} />
-          <Route path="/concert/:id" element={<ConcertDetail />} />
-          <Route path="/sign_in" element={<Login />} />
-        </Routes>
-      </div>
-      <Footer />
+      <AuthProvider>
+        <Header />
+        <div className="main-container">
+          <Routes>
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/concerts" element={<Filtering />} />
+            <Route path="/concert/:id" element={<ConcertDetail />} />
+            <Route path="/sign_in" element={<Login />} />
+            <Route
+              path="/purchase"
+              element={
+                <PrivateRoute>
+                  <Order />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </div>
+        <Footer />
+      </AuthProvider>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { format } from "date-fns";
 import "./ConcertCardPage.css"
+// import "./ConcertCardPanel.css";
 
 let properties = [
   "performer",
@@ -31,6 +32,7 @@ const ConcertCard = ({ concert, dateFormat }) => {
               }
               return <ListGroup.Item>{value}</ListGroup.Item>;
             }
+            return null;
           })}
         </ListGroup>
       </Card.Body>

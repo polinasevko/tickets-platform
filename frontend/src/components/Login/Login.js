@@ -1,28 +1,34 @@
 import "./Login.css";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 export default function Login() {
+  let { loginUser } = useContext(AuthContext);
+
   return (
     <div className="login-container">
       <p>Sign in</p>
-      <form className="login-form">
+      <form onSubmit={loginUser} className="login-form">
         <input
           className="login-input"
-          type="email"
-          placeholder="Enter email"
+          type="text"
+          placeholder="Enter username"
+          name="username"
         ></input>
 
         <input
           className="login-input"
           type="password"
           placeholder="Password"
+          name="password"
         ></input>
 
-        <a className="forgot-password" href="#!">
+        {/* <a className="forgot-password" href="#!">
           Forgot password?
-        </a>
+        </a> */}
 
         <button type="submit" className="login-button button">
-          Search
+          Log in
         </button>
       </form>
 
