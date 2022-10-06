@@ -17,7 +17,6 @@ const ConcertDetail = () => {
       );
       let data = await response.json();
       setConcert(data);
-      console.log(data);
     };
     getConcert();
   }, [concertId]);
@@ -25,7 +24,11 @@ const ConcertDetail = () => {
   return (
     <div className="concert-detail">
       <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp" />
-      <Link to="/purchase" className="buy-button button">
+      <Link
+        to="/purchase"
+        className="buy-button button"
+        state={{ concert: concert }}
+      >
         Buy
       </Link>
 

@@ -1,0 +1,10 @@
+.plus-minus-button-container{
+    display: flex;
+    gap: 10px;
+}
+
+.plus-minus-button{
+    width: 29px;
+    height: 29px;
+    line-height: 29px;
+}
