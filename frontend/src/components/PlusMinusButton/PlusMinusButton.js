@@ -7,7 +7,7 @@ const PlusMinusButton = ({ count, incrementCount, decrementCount }) => {
       <button onClick={decrementCount} className="plus-minus-button button">
         -
       </button>
-      <p>{count}</p>
+      <p className="plus-minus-text">{count}</p>
       <button onClick={incrementCount} className="plus-minus-button button">
         +
       </button>

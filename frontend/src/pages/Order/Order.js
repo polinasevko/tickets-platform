@@ -8,11 +8,11 @@ import PlusMinusButton from "../../components/PlusMinusButton/PlusMinusButton";
 const Order = () => {
   const location = useLocation();
   const concert = location.state.concert;
-  console.log("Location", location);
-  let [qty, setQty] = useState(1);
-  let [purchaseType, setPurchaseType] = React.useState("reserve");
-  let [purchaseMethod, setPurchaseMethod] = React.useState("paypal");
+
   let [step, setStep] = useState(1);
+  let [qty, setQty] = useState(1);
+  let [purchaseType, setPurchaseType] = useState("reserve");
+  let [purchaseMethod, setPurchaseMethod] = useState("paypal");
   let [totalPrice, setTotalPrice] = useState(concert.price);
 
   return (
@@ -21,9 +21,9 @@ const Order = () => {
 
       {step === 1 ? (
         <div className="wrapper">
-          <p>Tickets available:</p>
-          <p className="second-column">{concert.tickets_number}</p>
-          <p>Number of tickets:</p>
+          <p className="order-text">Tickets available:</p>
+          <p className="order-text second-column">{concert.tickets_number}</p>
+          <p className="order-text">Number of tickets:</p>
           <p className="second-column">
             <PlusMinusButton
               count={qty}
@@ -41,7 +41,7 @@ const Order = () => {
               }}
             />
           </p>
-          <p>Type of purchase:</p>
+          <p className="order-text">Type of purchase:</p>
           <div
             onChange={(e) => setPurchaseType(e.target.value)}
             className="second-column"
@@ -85,11 +85,11 @@ const Order = () => {
         </div>
       ) : (
         <div className="wrapper">
-          <p>Number of tickets:</p>
-          <p className="second-column">{qty}</p>
-          <p>Total price, $:</p>
-          <p className="second-column">{totalPrice}</p>
-          <p>Payment method:</p>
+          <p className="order-text">Number of tickets:</p>
+          <p className="order-text second-column">{qty}</p>
+          <p className="order-text">Total price, $:</p>
+          <p className="order-text second-column">{totalPrice}</p>
+          <p className="order-text">Payment method:</p>
           <div className="second-column">
             <input
               type="radio"

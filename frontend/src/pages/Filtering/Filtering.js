@@ -18,11 +18,7 @@ const Filtering = () => {
     address: "",
     search: "",
   });
-
-  const setParamsHandle = (newData) => {
-    setParams({ ...params, ...newData });
-  };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -40,9 +36,12 @@ const Filtering = () => {
 
   return (
     <div className="filtering">
-      <FilterSetPanel handleSubmit={handleSubmit} setParams={setParamsHandle} />
+      <FilterSetPanel
+        handleSubmit={handleSubmit}
+        setParams={(newData) => setParams({ ...params, ...newData })}
+      />
 
-      {show && <FilteredData filteredData={filteredData}/>}
+      {show && <FilteredData filteredData={filteredData} />}
     </div>
   );
 };

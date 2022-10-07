@@ -42,10 +42,6 @@ const FilterSetPanel = ({ handleSubmit, setParams }) => {
     setParams({ date_after, date_before });
   }, [range]);
 
-  let onRangeChange = (items) => {
-    setRange(items);
-  };
-
   return (
     <form onSubmit={handleSubmit} className="filterset-form">
       <Input
@@ -56,7 +52,7 @@ const FilterSetPanel = ({ handleSubmit, setParams }) => {
       />
       <DateRangeInput
         ranges={range}
-        onRangeChange={onRangeChange}
+        onRangeChange={(items) => setRange(items)}
         className="filterset-form__input-text"
       />
       <SelectElement
