@@ -25,7 +25,7 @@ const ConcertDetail = () => {
     <div className="concert-detail">
       <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp" />
       <Link
-        to="/purchase"
+        to={`/purchase?concert=${concert.id}`}
         className="buy-button button"
         state={{ concert: concert }}
       >
