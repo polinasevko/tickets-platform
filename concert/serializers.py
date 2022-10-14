@@ -20,6 +20,7 @@ class ConcertDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Concert
         fields = (
+            "id",
             "name",
             "performer",
             "type",
