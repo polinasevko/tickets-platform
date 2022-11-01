@@ -21,6 +21,7 @@ class ConcertDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_permissions(self):
         if self.request.method == "GET":
             self.permission_classes = [permissions.AllowAny]
+            # self.permission_classes = [permissions.IsAuthenticated]
         else:
             self.permission_classes = [permissions.IsAdminUser]
         return super().get_permissions()
