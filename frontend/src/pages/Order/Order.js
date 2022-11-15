@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ConcertCard from "../../components/ConcertCard/ConcertCard";
 import PlusMinusButton from "../../components/PlusMinusButton/PlusMinusButton";
+import jwt_decode from "jwt-decode";
 
 const Order = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,6 +33,37 @@ const Order = () => {
     };
     getConcert();
   }, [concertId]);
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+    console.log(
+      JSON.stringify({
+        qty: qty,
+        purchase_type: purchaseType,
+        total_price: totalPrice,
+        concert: concertId,
+        user: jwt_decode(localStorage.getItem("Tokens")).user_id,
+      })
+    );
+    let response = await fetch("http://127.0.0.1:8000/api/order/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        qty: qty,
+        purchase_type: purchaseType,
+        total_price: totalPrice,
+        concert: concertId,
+        user: jwt_decode(localStorage.getItem("Tokens")).user_id
+      }),
+    });
+
+    if (response.status === 200) {
+      let data = await response.json();
+      alert("Check your email.")
+    } else {
+      alert("Something went wrong.");
+    }
+  };
 
   return (
     <div className="order">
@@ -65,7 +97,7 @@ const Order = () => {
           >
             <input
               type="radio"
-              value="reserve"
+              value="Reserve"
               id="Reserve"
               checked={purchaseType === "reserve"}
             />
@@ -124,7 +156,7 @@ const Order = () => {
           ) : null}
           <button
             type="submit"
-            onClick={() => setStep(1)}
+            onClick={handleClick}
             className="continue-button button"
           >
             {purchaseType.charAt(0).toUpperCase() + purchaseType.slice(1)}

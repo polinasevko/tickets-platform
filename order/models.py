@@ -1,5 +1,3 @@
-from email.policy import default
-from ssl import create_default_context
 from django.db import models
 from django.contrib.auth.models import User
 from concert.models import Concert
