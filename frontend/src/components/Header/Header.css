@@ -13,6 +13,11 @@
     padding: 0 5vw;
 }
 
+.header__img{
+    color: white;
+    height: 38px;
+}
+
 .header__nav{
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -29,6 +34,11 @@
 
 .header__link:hover, 
 .header__link:focus{
+    opacity: 75%;
+}
+
+.header__img:hover,
+.header__img:focus {
     opacity: 75%;
 }
 

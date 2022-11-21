@@ -12,7 +12,7 @@ const Order = () => {
   const [concert, setConcert] = useState(0);
   let [step, setStep] = useState(1);
   let [qty, setQty] = useState(1);
-  let [purchaseType, setPurchaseType] = useState("reserve");
+  let [purchaseType, setPurchaseType] = useState("RES");
   let [purchaseMethod, setPurchaseMethod] = useState("paypal");
   let [totalPrice, setTotalPrice] = useState(0);
 
@@ -53,13 +53,14 @@ const Order = () => {
         purchase_type: purchaseType,
         total_price: totalPrice,
         concert: concertId,
-        user: jwt_decode(localStorage.getItem("Tokens")).user_id
+        user: jwt_decode(localStorage.getItem("Tokens")).user_id,
       }),
     });
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       let data = await response.json();
-      alert("Check your email.")
+      alert("Check your email.");
+
     } else {
       alert("Something went wrong.");
     }
@@ -97,9 +98,9 @@ const Order = () => {
           >
             <input
               type="radio"
-              value="Reserve"
+              value="RES"
               id="Reserve"
-              checked={purchaseType === "reserve"}
+              checked={purchaseType === "RES"}
             />
             <label for="Reserve" className="purchase-type-label">
               Reserve
@@ -107,9 +108,9 @@ const Order = () => {
 
             <input
               type="radio"
-              value="buy"
+              value="BUY"
               id="Buy"
-              checked={purchaseType === "buy"}
+              checked={purchaseType === "BUY"}
             />
             <label for="Buy" className="purchase-type-label">
               Buy
@@ -159,7 +160,8 @@ const Order = () => {
             onClick={handleClick}
             className="continue-button button"
           >
-            {purchaseType.charAt(0).toUpperCase() + purchaseType.slice(1)}
+            Reserve/Buy
+            {/* {purchaseType.charAt(0).toUpperCase() + purchaseType.slice(1)} */}
           </button>
         </div>
       )}

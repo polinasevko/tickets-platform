@@ -1,6 +1,7 @@
 import "./Login.css";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   let { loginUser } = useContext(AuthContext);
@@ -23,10 +24,6 @@ export default function Login() {
           name="password"
         ></input>
 
-        {/* <a className="forgot-password" href="#!">
-          Forgot password?
-        </a> */}
-
         <button type="submit" className="login-button button">
           Log in
         </button>
@@ -34,9 +31,9 @@ export default function Login() {
 
       <div className="sign-in-container">
         Don't have an account?{" "}
-        <a href="/sign_up" className="sign-in-href">
+        <Link to="/sign_up" className="sign-in-href">
           Sign Up
-        </a>
+        </Link>
       </div>
     </div>
   );

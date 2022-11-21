@@ -6,8 +6,10 @@ import Landing from "./pages/Landing/Landing";
 import Filtering from "./pages/Filtering/Filtering";
 import ConcertDetail from "./pages/ConcertDetail/ConcertDetail";
 import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Order from "./pages/Order/Order";
+import Account from "./pages/Account/Account";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <Route path="/concerts" element={<Filtering />} />
             <Route path="/concert/:id" element={<ConcertDetail />} />
             <Route path="/sign_in" element={<Login />} />
+            <Route path="/sign_up" element={<SignUp />} />
+            <Route path="/me" element={<Account />} />
             <Route
               path="/purchase"
               element={
