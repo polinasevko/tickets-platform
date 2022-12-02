@@ -11,7 +11,6 @@ const CardPanel = () => {
       try {
         let response = await fetch("http://127.0.0.1:8000/api/concert");
         let data = await response.json();
-        console.log(data);
         setConcert(data);
       } catch (e) {
         console.error(e);

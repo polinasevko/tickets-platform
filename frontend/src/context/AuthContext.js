@@ -1,6 +1,5 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext({
@@ -13,7 +12,6 @@ const AuthContext = createContext({
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  const navigate = useNavigate();
   let [tokens, setTokens] = useState(() =>
     localStorage.getItem("Tokens")
       ? JSON.parse(localStorage.getItem("Tokens"))

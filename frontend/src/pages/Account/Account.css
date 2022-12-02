@@ -1,12 +1,11 @@
 .account {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 0 5vw;
+    width: 1050px;
+    /* padding: 0 10vw; */
 }
-
 .filtered-data-table {
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
 }

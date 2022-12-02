@@ -19,12 +19,10 @@ const Order = () => {
   useEffect(() => {
     let getConcert = async () => {
       try {
-        console.log(concertId);
         let response = await fetch(
           `http://127.0.0.1:8000/api/concert/${concertId}/`
         );
         let data = await response.json();
-        console.log(data);
         setConcert(data);
         setTotalPrice(data.price);
       } catch (e) {
@@ -36,15 +34,6 @@ const Order = () => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    console.log(
-      JSON.stringify({
-        qty: qty,
-        purchase_type: purchaseType,
-        total_price: totalPrice,
-        concert: concertId,
-        user: jwt_decode(localStorage.getItem("Tokens")).user_id,
-      })
-    );
     let response = await fetch("http://127.0.0.1:8000/api/order/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

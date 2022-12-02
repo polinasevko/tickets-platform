@@ -26,7 +26,6 @@ const Filtering = () => {
         "http://127.0.0.1:8000/api/concert?" + new URLSearchParams(params)
       );
       let data = await response.json();
-      console.log(data);
       setFilteredData(data);
       setShow(true);
     } catch (e) {
