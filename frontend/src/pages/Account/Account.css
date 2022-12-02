@@ -1,0 +1,65 @@
+.account {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 5vw;
+}
+
+.filtered-data-table {
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.filtered-data-table__row {
+    border-bottom: 2px solid;
+    background-color: white;
+    height: 112px;
+}
+
+.filtered-data-table__cell {
+    padding: 15px;
+    font-size: 16px;
+}
+
+.filtered-data-table__cell:first-child {
+    text-align: center;
+    font-size: 24px;
+    width: 10%;
+}
+
+.filtered-data-table__cell:last-child {
+    width: 20%;
+}
+
+.filtered-data-table__concert-name {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.concert-details-link {
+    background-color: #787878;
+    width: 179px;
+}
+
+.pagination-container {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-text {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.pagination-button {
+    background-color: #e6e6e6;
+    border: 0px;
+    height: 38px;
+    line-height: 38px;
+    width: 210px;
+}

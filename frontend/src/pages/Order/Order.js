@@ -160,8 +160,7 @@ const Order = () => {
             onClick={handleClick}
             className="continue-button button"
           >
-            Reserve/Buy
-            {/* {purchaseType.charAt(0).toUpperCase() + purchaseType.slice(1)} */}
+            {purchaseType === "RES" ? "Reserve" : "Buy"}
           </button>
         </div>
       )}

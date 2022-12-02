@@ -33,6 +33,14 @@ function App() {
                 </PrivateRoute>
               }
             />
+            {/* <Route
+              path="/me"
+              element={
+                <PrivateRoute>
+                  <Account />
+                </PrivateRoute>
+              }
+            /> */}
           </Routes>
         </div>
         <Footer />
