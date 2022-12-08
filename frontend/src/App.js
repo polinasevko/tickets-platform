@@ -24,7 +24,6 @@ function App() {
             <Route path="/concert/:id" element={<ConcertDetail />} />
             <Route path="/sign_in" element={<Login />} />
             <Route path="/sign_up" element={<SignUp />} />
-            <Route path="/me" element={<Account />} />
             <Route
               path="/purchase"
               element={
@@ -33,14 +32,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            {/* <Route
+            <Route
               path="/me"
               element={
                 <PrivateRoute>
                   <Account />
                 </PrivateRoute>
               }
-            /> */}
+            />
           </Routes>
         </div>
         <Footer />

@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import ConcertCard from "../../components/ConcertCard/ConcertCard";
 import PlusMinusButton from "../../components/PlusMinusButton/PlusMinusButton";
 import jwt_decode from "jwt-decode";
+import Payment from "../../components/Payment/Payment";
 
 const Order = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +50,6 @@ const Order = () => {
     if (response.status === 201) {
       let data = await response.json();
       alert("Check your email.");
-
     } else {
       alert("Something went wrong.");
     }
@@ -144,13 +144,14 @@ const Order = () => {
               </div>
             </>
           ) : null}
-          <button
+          {/* <button
             type="submit"
             onClick={handleClick}
             className="continue-button button"
           >
             {purchaseType === "RES" ? "Reserve" : "Buy"}
-          </button>
+          </button> */}
+            <Payment price={totalPrice} createOrder={handleClick} />
         </div>
       )}
     </div>

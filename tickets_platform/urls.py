@@ -25,6 +25,7 @@ urlpatterns = [
     path("api/concert/", include("concert.urls")),
     path("api/concert_type/", include("concert_type.urls")),
     path("api/order/", include("order.urls")),
+    path("webhooks/", include("payments.urls")),
 ]
 
 if settings.DEBUG:

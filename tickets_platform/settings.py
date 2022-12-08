@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "characteristic",
     "users",
     "order",
+    "payments",
 ]
 
 MIDDLEWARE = [
@@ -194,3 +195,7 @@ EMAIL_HOST_USER = "tickets_platform@fastmail.com"
 EMAIL_HOST_PASSWORD = "clxs5rgz33cheutr"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
+PAYPAL_CLIENT_SECRET = os.environ.get("PAYPAL_CLIENT_SECRET")
+PAYPAL_WEBHOOK_ID = os.environ.get("PAYPAL_WEBHOOK_ID")
