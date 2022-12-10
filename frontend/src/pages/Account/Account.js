@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { IoIosTrophy } from "react-icons/io";
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
+import Payment from "../../components/Payment/Payment";
 import "./Account.css";
 
 const Account = () => {
@@ -43,19 +44,39 @@ const Account = () => {
     }
   };
 
+  const handleOrder = async (isPaid) => {
+    let orderId = parseInt(isPaid.purchase_units[0].custom_id, 10);
+    let response = await fetch(`http://127.0.0.1:8000/api/order/${orderId}/`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        is_paid: isPaid,
+        purchase_type: "BUY",
+      }),
+    });
+
+    if (response.status === 201) {
+      let data = await response.json();
+      alert("Check your email.");
+    } else {
+      alert("Something went wrong.");
+    }
+  };
+
+  let achievements = <IoIosTrophy style={{ color: "yellow", width: "50px" }} />;
+  // if (tickets.length === 3) {
+  //   achievements = 
+  // }
+  // else if (Object.keys(tickets).length >= 1) {
+  //   //
+  // } else {
+  //   //newby
+  // }
+
   return (
     <div className="account">
       <h2>My achivements:</h2>
-      {/* if(mytickets.count() >= 5)
-          {
-              #oracool
-      }
-      else if(mytickets.count() >= 1){
-              #
-          }
-      else{
-              #newby
-          } */}
+      {achievements}
       <h2>My tickets:</h2>
       <table className="filtered-data-table">
         <tbody>
@@ -80,11 +101,15 @@ const Account = () => {
                       {item.qty} tickets
                     </td>
                     <td className="filtered-data-table__cell">
-                      {item.is_paid ? null : (
-                        <Link to="#" className="concert-details-link button">
-                          Buy
-                        </Link>
+                      {item.purchase_type === "RES" && (
+                        <Payment
+                          price={item.total_price}
+                          handleOrder={handleOrder}
+                          orderId={item.id.toString()}
+                        />
                       )}
+                      {item.purchase_type === "EXP" && "Expired"}
+                      {item.purchase_type === "BUY" && "Bought"}
                     </td>
                   </tr>
                 );

@@ -1,7 +1,9 @@
 import React from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const Payment = ({ price, createOrder }) => {
+const Payment = ({ price, handleOrder, orderId }) => {
+  console.log(orderId);
+  console.log(price);
   return (
     <PayPalScriptProvider
       options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}
@@ -13,17 +15,20 @@ const Payment = ({ price, createOrder }) => {
             purchase_units: [
               {
                 amount: {
-                  value: price.toString(),
+                  value: price,
                 },
+                custom_id: orderId,
               },
             ],
           });
         }}
         onApprove={(data, actions) => {
-          return actions.order.capture().then(() => createOrder());
+          // let response = actions.order.capture().then();
+          // return handleOrder(response);
+          return actions.order.capture().then(handleOrder);
         }}
         onCancel={() => alert("You cancelled payment.")}
-        onError={() => alert("There was an error processing your payment.")}
+        onError={(err) => alert("Error in payment: " + err)}
       />
     </PayPalScriptProvider>
   );

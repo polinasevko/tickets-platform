@@ -33,8 +33,7 @@ const Order = () => {
     getConcert();
   }, [concertId]);
 
-  const handleClick = async (event) => {
-    event.preventDefault();
+  const handleOrder = async (isPaid) => {
     let response = await fetch("http://127.0.0.1:8000/api/order/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,6 +41,7 @@ const Order = () => {
         qty: qty,
         purchase_type: purchaseType,
         total_price: totalPrice,
+        is_paid: isPaid,
         concert: concertId,
         user: jwt_decode(localStorage.getItem("Tokens")).user_id,
       }),
@@ -128,7 +128,7 @@ const Order = () => {
           <p className="order-text second-column">{qty}</p>
           <p className="order-text">Total price, $:</p>
           <p className="order-text second-column">{totalPrice}</p>
-          {purchaseType === "buy" ? (
+          {purchaseType === "BUY" ? (
             <>
               <p className="order-text">Payment method:</p>
               <div className="second-column">
@@ -142,16 +142,20 @@ const Order = () => {
                   Paypal
                 </label>
               </div>
+              <Payment
+                price={totalPrice.toString()}
+                handleOrder={handleOrder}
+              />
             </>
-          ) : null}
-          {/* <button
-            type="submit"
-            onClick={handleClick}
-            className="continue-button button"
-          >
-            {purchaseType === "RES" ? "Reserve" : "Buy"}
-          </button> */}
-            <Payment price={totalPrice} createOrder={handleClick} />
+          ) : (
+            <button
+              type="submit"
+              onClick={() => handleOrder(false)}
+              className="continue-button button"
+            >
+              Reserve
+            </button>
+          )}
         </div>
       )}
     </div>

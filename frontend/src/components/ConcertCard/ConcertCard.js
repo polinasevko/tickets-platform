@@ -1,8 +1,6 @@
 import React from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { format } from "date-fns";
-import "./ConcertCardPage.css"
-// import "./ConcertCardPanel.css";
 
 let properties = [
   "performer",

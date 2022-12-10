@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ItemsGrid from "../../../components/ItemsGrid/ItemsGrid";
 import ConcertCard from "../../../components/ConcertCard/ConcertCard";
+import "../../../components/ConcertCard/ConcertCardPanel.css";
 
 const CardPanel = () => {
   const [concerts, setConcert] = useState(null);

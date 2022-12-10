@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ConcertCard from "../../components/ConcertCard/ConcertCard";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../../components/ConcertCard/ConcertCardPage.css"
 
 const ConcertDetail = () => {
   let params = useParams();
@@ -23,7 +24,7 @@ const ConcertDetail = () => {
 
   return (
     <div className="concert-detail">
-      <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp" />
+      <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp"/>
       <Link
         to={`/purchase?concert=${concert.id}`}
         className="buy-button button"
