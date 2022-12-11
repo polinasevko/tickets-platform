@@ -57,7 +57,7 @@ const Order = () => {
 
   return (
     <div className="order">
-      <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp" />
+      <ConcertCard concert={concert} dateFormat="eeee, yyyy.MM.dd, pp" className="page"/>
 
       {step === 1 ? (
         <div className="wrapper">

@@ -1,11 +1,12 @@
-.card{
+.card.page{
     display: flex;
     width: 100%;
     flex-direction: row-reverse;
     justify-content: space-between;
+    gap: 0px;
 }
 
-.card-title{
+.card-title.page{
     color: white;
     font-size: 40px;
     font-weight: 600;
@@ -23,11 +24,11 @@
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    .card{
+    .card.page{
         gap: 10px;
     }
     
-    .card-title{
+    .card-title.page{
         font-size: 16px;
     }
     

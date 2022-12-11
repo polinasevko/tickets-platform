@@ -1,5 +1,7 @@
 .card{
     display: flex;
+    flex-direction: row;
+    justify-content: normal;
     gap: 20px;
 }
 
