@@ -10,6 +10,7 @@ import SignUp from "./components/SignUp/SignUp";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Order from "./pages/Order/Order";
 import Account from "./pages/Account/Account";
+import NotFound from "./pages/NotFound/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <div className="main-container">
           <Routes>
+            <Route path="*" element={<NotFound />} />
             <Route exact path="/" element={<Landing />} />
             <Route path="/concerts" element={<Filtering />} />
             <Route path="/concert/:id" element={<ConcertDetail />} />
