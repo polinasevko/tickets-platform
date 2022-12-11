@@ -22,7 +22,7 @@ const CardPanel = () => {
 
   return (
     <div>
-      <h2>Top concerts</h2>
+      <h2>Upcoming concerts</h2>
       <ItemsGrid>
         {concerts
           ? concerts.slice(0, 3).map((c) => (

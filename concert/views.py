@@ -1,12 +1,13 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
+from django.utils import timezone
 from concert.serializers import ConcertListSerializer, ConcertDetailSerializer
 from concert.models import Concert
 from concert.filter import ConcertFilter
 
 
 class ConcertListView(generics.ListAPIView):
-    queryset = Concert.objects.all()
+    queryset = Concert.objects.filter(date__gte=timezone.now()).order_by('date')
     permission_classes = [permissions.AllowAny]
     serializer_class = ConcertListSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
