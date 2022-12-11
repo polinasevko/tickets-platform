@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { IoIosTrophy } from "react-icons/io";
+import Hint from "react-portal-hint";
+import "react-portal-hint/dist/default.css";
+import trophyColoredImage from "../../assets/img/svg/trophy_colored.svg";
+import trophyImage from "../../assets/img/svg/trophy.svg";
+import medalImage from "../../assets/img/svg/medal.svg";
+import medalColoredImage from "../../assets/img/svg/medal_colored.svg";
 import { format } from "date-fns";
 import Payment from "../../components/Payment/Payment";
 import "./Account.css";
 
 const Account = () => {
   const [tickets, setTickets] = useState();
+  const [boughtTickets, setBoughtTickets] = useState();
   const [concerts, setConcerts] = useState([]);
 
   useEffect(() => {
@@ -25,6 +31,7 @@ const Account = () => {
         }
 
         setTickets(data);
+        setBoughtTickets(data.filter((obj) => obj.purchase_type === "BUY"));
       } catch (e) {
         console.error(e);
       }
@@ -63,26 +70,51 @@ const Account = () => {
     }
   };
 
-  let achievements = <IoIosTrophy style={{ color: "yellow", width: "50px" }} />;
-  // if (tickets.length === 3) {
-  //   achievements = 
-  // }
-  // else if (Object.keys(tickets).length >= 1) {
-  //   //
-  // } else {
-  //   //newby
-  // }
-
   return (
     <div className="account">
       <h2>My achivements:</h2>
-      {achievements}
+      {boughtTickets
+        ? (boughtTickets.length > 5 && (
+            <Hint content="You're guru! You bought more than 5 tickets!">
+              <img
+                src={`${trophyColoredImage}`}
+                alt="trophy"
+                className="trophy-image"
+              />
+            </Hint>
+          )) ||
+          (boughtTickets.length > 1 && (
+            <Hint content="You're master! You bought more than 1 ticket!">
+              <img
+                src={`${trophyImage}`}
+                className="trophy-image filtered-image"
+                alt="trophy"
+              />
+            </Hint>
+          )) ||
+          (boughtTickets.length === 1 && (
+            <Hint content="Yaaay! You bought your first ticket! Congrats!">
+              <img
+                src={`${medalColoredImage}`}
+                className="trophy-image"
+                alt="trophy"
+              />
+            </Hint>
+          )) || (
+            <Hint content="You've registered on tickets-platform. Happy to see you!">
+              <img
+                src={`${medalImage}`}
+                alt="trophy"
+                className="trophy-image filtered-image"
+              />
+            </Hint>
+          )
+        : null}
       <h2>My tickets:</h2>
       <table className="filtered-data-table">
         <tbody>
           {tickets
             ? tickets.map((item) => {
-                console.log(item);
                 let concert = concerts.find((obj) => obj.id === item.concert);
                 let date = new Date(concert.date);
                 return (

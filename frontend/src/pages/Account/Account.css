@@ -62,3 +62,11 @@
     line-height: 38px;
     width: 210px;
 }
+
+.trophy-image{
+    height: 3em;
+}
+
+.filtered-image{
+    filter: invert(99%) sepia(0%) saturate(2%) hue-rotate(14deg) brightness(100%) contrast(100%);
+}
