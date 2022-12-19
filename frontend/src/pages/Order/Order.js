@@ -6,8 +6,10 @@ import ConcertCard from "../../components/ConcertCard/ConcertCard";
 import PlusMinusButton from "../../components/PlusMinusButton/PlusMinusButton";
 import jwt_decode from "jwt-decode";
 import Payment from "../../components/Payment/Payment";
+import { useNavigate } from "react-router-dom"
 
 const Order = () => {
+  let nav = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams();
   const concertId = searchParams.get("concert");
   const [concert, setConcert] = useState(0);
@@ -21,11 +23,26 @@ const Order = () => {
     let getConcert = async () => {
       try {
         let response = await fetch(
-          `http://127.0.0.1:8000/api/concert/${concertId}/`
-        );
+          // `http://127.0.0.1:8000/api/concert/${concertId}/`
+          `https://api.seatgeek.com/2/events/${concertId}?client_id=${process.env.REACT_APP_SEATGEEK_CLIENT_ID}`
+       );
         let data = await response.json();
-        setConcert(data);
-        setTotalPrice(data.price);
+        if (new Date(data.datetime_utc).getTime() <= new Date().getTime()){
+          nav("*");
+        }
+        setConcert({
+          id: data.id,
+          name: data.title,
+          performer: data.performers[0].name,
+          type: data.type,
+          tickets_number: data.stats.listing_count ?? 15,
+          date: data.datetime_local,
+          address: data.venue.extended_address,
+          price: data.stats.average_price ?? 100,
+          image: data.performers[0].image,
+          description: "",
+        });
+        setTotalPrice(data.stats.average_price ?? 100);
       } catch (e) {
         console.error(e);
       }
@@ -50,6 +67,7 @@ const Order = () => {
     if (response.status === 201) {
       let data = await response.json();
       alert("Check your email.");
+      nav('/');
     } else {
       alert("Something went wrong.");
     }
@@ -61,8 +79,8 @@ const Order = () => {
 
       {step === 1 ? (
         <div className="wrapper">
-          <p className="order-text">Tickets available:</p>
-          <p className="order-text second-column">{concert.tickets_number}</p>
+          {/* <p className="order-text">Tickets available:</p>
+          <p className="order-text second-column">{concert.tickets_number}</p> */}
           <p className="order-text">Number of tickets:</p>
           <PlusMinusButton
             className="second-column"

@@ -13,7 +13,8 @@ class Order(models.Model):
         EXPIRED = "EXP", "Expired"
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    concert = models.ForeignKey(Concert, on_delete=models.CASCADE)
+    concert = models.IntegerField()
+    # concert = models.ForeignKey(Concert, on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1)
     total_price = models.DecimalField(max_digits=12, decimal_places=2)
     purchase_type = models.CharField(

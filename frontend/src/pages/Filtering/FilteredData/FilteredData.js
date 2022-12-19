@@ -23,7 +23,7 @@ const FilteredData = ({ filteredData }) => {
   if (!filteredData.length) {
     return <h3>Not found</h3>;
   }
-
+  
   return (
     <>
       <table className="filtered-data-table">

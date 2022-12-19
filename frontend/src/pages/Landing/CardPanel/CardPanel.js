@@ -10,9 +10,29 @@ const CardPanel = () => {
   useEffect(() => {
     let getConcerts = async () => {
       try {
-        let response = await fetch("http://127.0.0.1:8000/api/concert");
+        let response = await fetch(
+          // "http://127.0.0.1:8000/api/concert"
+          `https://api.seatgeek.com/2/events?client_id=${process.env.REACT_APP_SEATGEEK_CLIENT_ID}&sort=score.asc&type=concert&per_page=20&`
+        );
         let data = await response.json();
-        setConcert(data);
+        setConcert(
+          ...new Array(
+            data.events.map((element) => {
+              return {
+                id: element.id,
+                name: element.title,
+                performer: element.performers[0].name,
+                type: element.type,
+                tickets_number: element.stats.listing_count ?? 15,
+                date: element.datetime_local,
+                address: element.venue.extended_address,
+                price: element.stats.average_price ?? 100,
+                image: element.performers[0].image,
+                description: "",
+              };
+            })
+          )
+        );
       } catch (e) {
         console.error(e);
       }

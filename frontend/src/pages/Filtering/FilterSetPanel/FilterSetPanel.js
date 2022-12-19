@@ -7,12 +7,12 @@ import { format } from "date-fns";
 import "./FilterSetPanel.css";
 
 const FilterSetPanel = ({ handleSubmit, setParams }) => {
-  let [types, setType] = useState("");
+  let [types, setType] = useState([]);
 
   let [range, setRange] = useState([
     {
-      startDate: new Date(),
-      endDate: "",
+      startDate: new Date(new Date().setDate((new Date()).getDate() + 1)),
+      endDate: new Date(new Date().setFullYear((new Date()).getFullYear() + 1)),
       key: "selection",
     },
   ]);
@@ -20,9 +20,12 @@ const FilterSetPanel = ({ handleSubmit, setParams }) => {
   useEffect(() => {
     let getTypes = async () => {
       try {
-        let response = await fetch("http://127.0.0.1:8000/api/concert_type");
+        let response = await fetch(
+          // "http://127.0.0.1:8000/api/concert_type"
+          `https://api.seatgeek.com/2/genres?client_id=${process.env.REACT_APP_SEATGEEK_CLIENT_ID}`
+        );
         let data = await response.json();
-        setType(data);
+        setType(data.genres);
       } catch (e) {
         console.error(e);
       }
@@ -39,15 +42,18 @@ const FilterSetPanel = ({ handleSubmit, setParams }) => {
     if (range[0].endDate) {
       date_before = format(range[0].endDate, "yyyy-MM-dd");
     }
-    setParams({ date_after, date_before });
+    setParams({
+      "datetime_utc.gte": date_after,
+      "datetime_utc.lte": date_before,
+    });
   }, [range]);
 
   return (
     <form onSubmit={handleSubmit} className="filterset-form">
       <Input
         type="text"
-        placeholder="Address"
-        onChange={(address) => setParams({ address })}
+        placeholder="City"
+        onChange={(address) => setParams({ "venue.city": address })}
         className="filterset-form__input-text"
       />
       <DateRangeInput
@@ -57,13 +63,13 @@ const FilterSetPanel = ({ handleSubmit, setParams }) => {
       />
       <SelectElement
         items={types}
-        onChange={(type) => setParams({ type })}
+        onChange={(type) => setParams({ "genres.slug": type })}
         className="filterset-form__input-text"
       />
       <Input
         type="text"
         placeholder="Name/Artist"
-        onChange={(search) => setParams({ search })}
+        onChange={(search) => setParams({ q: search })}
         className="filterset-form__input-text"
       />
       <button type="submit" className="filterset-form__search-button button">

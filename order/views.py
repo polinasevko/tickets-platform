@@ -20,7 +20,7 @@ class OrderView(viewsets.ModelViewSet):
             request.data["is_paid"] = True
         response = super().create(request, *args, **kwargs)
         if response.status_code == 201:
-            recalc_tickets(response.data["concert"], response.data["qty"])
+            # recalc_tickets(response.data["concert"], response.data["qty"])
             email = User.objects.get(id=response.data["user"]).email
             send_email.delay(email, response.data["purchase_type"])
         return response

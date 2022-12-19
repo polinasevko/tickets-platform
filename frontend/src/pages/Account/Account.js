@@ -42,10 +42,25 @@ const Account = () => {
   let getConcert = async (concertId) => {
     try {
       let response = await fetch(
-        `http://127.0.0.1:8000/api/concert/${concertId}/`
+        // `http://127.0.0.1:8000/api/concert/${concertId}/`
+        `https://api.seatgeek.com/2/events/${concertId}?client_id=${process.env.REACT_APP_SEATGEEK_CLIENT_ID}`
       );
       let data = await response.json();
-      setConcerts((prev) => [...prev, data]);
+      setConcerts((prev) => [
+        ...prev,
+        {
+          id: data.id,
+          name: data.title,
+          performer: data.performers[0].name,
+          type: data.type,
+          tickets_number: data.stats.listing_count ?? 15,
+          date: data.datetime_local,
+          address: data.venue.extended_address,
+          price: data.stats.average_price ?? 100,
+          image: data.performers[0].image,
+          description: "",
+        },
+      ]);
     } catch (e) {
       console.error(e);
     }
